@@ -26,32 +26,46 @@ setTimeout(() => {
 
 //chiedo all'utente di inserire 5 numeri uno per volta
 
-setTimeout(askUserNumbs, 4000);
+setTimeout(askUserNumbs, 3500);
+
+let numbersTried = [];
 
 function askUserNumbs() {
 
-    let numbersTried = [];
 
     for(let n = 0; n < 5; n++) {
     numbersTried.push(parseInt(prompt("inserisci i numeri appena visualizzati")))
     } 
-
-    return numbersTried;
 }
 
-userNumbers= askUserNumbs;
 
-setTimeout(checkToWin,4500)
+
+setTimeout(checkToWin,3500)
 
 function checkToWin() {
-    if(numbs === userNumbers) {
-        alert("vittoria!")
-    } else {
-        alert("spiacente, non hai indovinato tutti i numeri!")
-    }
+    let userNumbers= numbersTried;
+    const result = userNumbers.filter(function(currentNumb){
+        return numbs.includes(currentNumb);
+    })
+
+    if (result.length === 0){
+        alert('NON HAI AZZACCATO MANCO UN NUMERO!')
+    } else {alert('COMPLIMENTI, HAI AZZACCATO I SEGUENTI NUMERI: ' + result.join( ', '))}
+
+
+    /* for(let i =0; i < numbs.length; i++){
+        
+        if(numbersTried.includes(numbs[i])){
+        
+            alert('HAI VINTO!');
+            break
+        } else if ( )
+        { alert('Spiacente, hai perso!')}
+    
+    console.log(numbs,userNumbers);
+} */
+
 }
 
-
-checkToWin;
 
 
